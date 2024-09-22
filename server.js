@@ -22,6 +22,11 @@ app.get("/", async (req,res) => {
     res.render('index.ejs')
 });
 
+app.get("/cars", async(req,res) => {
+    const allCars = await Car.find();
+    res.render("Cars/carCollection.ejs", {cars: allCars})
+})
+
 app.get('/cars/new', (req,res) => {
     res.render("Cars/new.ejs")
 });
