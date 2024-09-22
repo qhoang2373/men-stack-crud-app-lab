@@ -17,10 +17,13 @@ mongoose.connection.on('connected', () => {
 
 //===============Routes================//
 
-app.get("/test", async (req,res) => {
+app.get("/", async (req,res) => {
     res.render('index.ejs')
 });
 
+app.get('/new', (req,res) => {
+    res.render("new.ejs")
+})
 
 app.listen(3000, () => {
     console.log("Listening on port 3000");
