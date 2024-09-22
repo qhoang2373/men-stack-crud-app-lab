@@ -10,7 +10,7 @@ const app = express () ;
 //===============Routes================//
 
 app.get("/test", async (req,res) => {
-    res.render('server.ejs')
+    res.send('testing')
 })
 
 
