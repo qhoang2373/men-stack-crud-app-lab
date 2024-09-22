@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const methodOverride = require('method-override')
-const morgan = require('morgan')
+const morgan = require('morgan');
 const Car = require('./models/car.js');
 
 
@@ -15,10 +15,10 @@ mongoose.connection.on('connected', () => {
     console.log('Connected to MongoDB')
 })
 
-//===============Middleware===nodem=============//
+//===============Middleware=================//
 
-app.use(express.urlencoded({ extended: false}))
-app.use(methodOverride('_method'))
+app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride("_method")); 
 app.use(morgan('dev'))
 
 //===============Routes================//
@@ -35,6 +35,11 @@ app.get("/cars", async(req,res) => {
 app.get('/cars/new', (req,res) => {
     res.render("Cars/new.ejs")
 });
+
+app.get("/cars/:carId", async(req,res) => {
+    const foundCar = await Car.findById(req.params.carId);
+    res.render("Cars/show.ejs", {car: foundCar});
+})
 
 app.get('/cars/:carId/edit', async(req,res) => {
     const foundCar = await Car.findById(req.params.carbyId)
