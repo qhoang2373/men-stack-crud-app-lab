@@ -48,7 +48,6 @@ app.get('/cars/:carId/edit', async(req,res) => {
 
 
 
-
 app.put('/cars/:carId', async(req,res) => {
     if(req.body.isFast === 'on') {
         req.body.isFast = true
