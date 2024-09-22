@@ -7,5 +7,5 @@ const carSchema = new mongoose.Schema({
     isFast: Boolean,
 });
 
-const Car = mongoose.model('Car', carSchema)
+const Car = mongoose.model('Car', carSchema);
 module.exports = Car;

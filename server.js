@@ -2,17 +2,16 @@
 require('dotenv').config()
 const express = require('express');
 const app = express ();
-
 const mongoose = require("mongoose");
+const car = require('./models/car.js');
+
+
+//===============Mongoose================//
+
 mongoose.connect(process.env.MONGODB_URI)
 mongoose.connection.on('connected', () => {
     console.log('Connected to MongoDb')
 })
-
-const Car = require('./models/car.js')
-
-
-//===============Mongoose================//
 
 //===============Middleware================//
 
@@ -20,7 +19,7 @@ const Car = require('./models/car.js')
 
 app.get("/test", async (req,res) => {
     res.render('index.ejs')
-})
+});
 
 
 app.listen(3000, () => {
