@@ -4,6 +4,8 @@ const express = require('express');
 const app = express ();
 const mongoose = require("mongoose");
 const Car = require('./models/car.js');
+const methodOVerride = require('method-override')
+const morgan = require('morgan')
 
 
 //===============Mongoose================//
@@ -14,6 +16,10 @@ mongoose.connection.on('connected', () => {
 })
 
 //===============Middleware================//
+
+app.use(express.urlencoded({ extended: false}))
+app.use(methodOverride('_method'))
+app.use(morgan('dev'))
 
 //===============Routes================//
 
@@ -29,6 +35,8 @@ app.get("/cars", async(req,res) => {
 app.get('/cars/new', (req,res) => {
     res.render("Cars/new.ejs")
 });
+
+
 
 app.put('/cars/:carId', async(req,res) => {
     if(req.body.isFast === 'on') {
