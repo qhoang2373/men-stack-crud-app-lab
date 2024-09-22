@@ -22,17 +22,17 @@ app.get("/", async (req,res) => {
     res.render('index.ejs')
 });
 
-app.get('/new', (req,res) => {
-    res.render("new.ejs")
+app.get('/cars/new', (req,res) => {
+    res.render("Cars/new.ejs")
 });
 
 app.post('/cars', async(req,res) => {
     if (req.body.isFast === 'on'){
-        req.body.isFast === true
+        req.body.isFast === true;
     }else {
-        req.body.isFast = false
+        req.body.isFast = false;
     }
-    await Car.create(req.body)
+    await Car.create(req.body);
     res.redirect('/cars')
 });
 
