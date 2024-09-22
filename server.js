@@ -3,7 +3,6 @@ require('dotenv').config()
 const express = require('express');
 const app = express ();
 const mongoose = require("mongoose");
-const car = require('./models/car.js');
 const Car = require('./models/car.js');
 
 
@@ -31,15 +30,24 @@ app.get('/cars/new', (req,res) => {
     res.render("Cars/new.ejs")
 });
 
-app.post('/cars', async(req,res) => {
-    if (req.body.isFast === 'on'){
-        req.body.isFast === true;
-    }else {
-        req.body.isFast = false;
-    }
-    await Car.create(req.body);
+app.put('/cars/')
+
+app.delete('/cars/:carId', async(req,res) => {
+    await Car.findByIdAndDelete(req.params.carId)
     res.redirect('/cars')
 });
+
+app.post('/cars', async(req, res) => {
+    if(req.body.isFast === 'on'){
+        req.body.isFast = true
+    } else {
+        req.body.isFast = false
+    }
+    await Car.create(req.body)
+    res.redirect('/Cars');
+});
+
+
 
 app.listen(3000, () => {
     console.log("Listening on port 3000");

@@ -4,7 +4,7 @@ const carSchema = new mongoose.Schema({
     name: String,
     model: String,
     make: String,
-    isFast: Boolean,
+    isFast: Boolean
 });
 
 const Car = mongoose.model('Car', carSchema);
