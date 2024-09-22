@@ -4,6 +4,7 @@ const express = require('express');
 const app = express ();
 const mongoose = require("mongoose");
 const car = require('./models/car.js');
+const Car = require('./models/car.js');
 
 
 //===============Mongoose================//
@@ -23,7 +24,17 @@ app.get("/", async (req,res) => {
 
 app.get('/new', (req,res) => {
     res.render("new.ejs")
-})
+});
+
+app.post('/cars', async(req,res) => {
+    if (req.body.isFast === 'on'){
+        req.body.isFast === true
+    }else {
+        req.body.isFast = false
+    }
+    await Car.create(req.body)
+    res.redirect('/cars')
+});
 
 app.listen(3000, () => {
     console.log("Listening on port 3000");
