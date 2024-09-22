@@ -5,7 +5,7 @@ const carSchema = new mongoose.Schema({
     model: String,
     make: String,
     isFast: Boolean,
-})
+});
 
 const Car = mongoose.model('Car', carSchema)
-module.exports = Car
+module.exports = Car;

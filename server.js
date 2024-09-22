@@ -9,6 +9,8 @@ mongoose.connection.on('connected', () => {
     console.log('Connected to MongoDb')
 })
 
+const Car = require('./models/car.js')
+
 
 //===============Mongoose================//
 
