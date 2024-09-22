@@ -6,6 +6,7 @@
     <title>Current Car</title>
 </head>
 <body>
+    <a href="/cars">Back to Car Collection</a>
     <h1><%=car.make %> <%= car.model %></h1>
     <% if (car.isFast) { %>
         <p>This Car is Built for Speed</p>
@@ -15,7 +16,15 @@
 
  <form method="POST" action="/cars/<%= car._id%>?_method=DELETE">
     <button type="submit">Delete Car</button>
+
  </form>  
-    
+
+ <button type="submit"><%= car.name %> <a href="/cars/<%= car._id %>/edit">Edit Car<%= car.name %></a> </button>
+ 
+</body>
+</html>
+
+
+
 </body>
 </html>

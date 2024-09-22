@@ -7,26 +7,26 @@
     </head>
 
     <body>
-     <h1>Car Edit - <%= car.model %></h1>
+        <a href="/cars">Back to Cars</a>
+     <h1>Car Edit - <%= car.make %></h1>
     <form method="POST" action="/cars/<%=car._id%>?_method=PUT">
 
-        <div>
-        <label for="model">model:</label>
-        <input type="text" name="model" value="<%= car.model %>" />
-        </div>
+        <label for="make">Make:</label>
+        <input type="text" name="make" id="make" value="<%= car.title %>" />
 
-    <div>
-        <label for="make">make:</label>
-        <input type="text" name="make"  value="<%= car.title %>" />
-    </div>
 
-    <div>
+        <label for="model">Model:</label>
+        <input type="text" name="model" id="model" value="<%= car.model %>" />
+
+
         <label for="isFast">Is it Built for Speed?</label>
-        <input type="checkbox" name="isFast" <% if (car.isFast) { %>checked<% } %> >
-    </div>
+        <input type="checkbox" name="isFast" id="isFast" <% if (car.isFast) { %>checked<% } %> >
+
 
     <button type="submit">Update</button>
 
         </form>
+
     </body>
 </html>
+
