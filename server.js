@@ -1,7 +1,7 @@
 //===============inputs================//
 
 const express = require('express');
-const app = express () ;
+const app = express ();
 
 //===============Mongoose================//
 
@@ -10,7 +10,7 @@ const app = express () ;
 //===============Routes================//
 
 app.get("/test", async (req,res) => {
-    res.send('testing')
+    res.render('index.ejs')
 })
 
 
