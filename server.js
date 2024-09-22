@@ -1,21 +1,21 @@
 //===============inputs================//
 require('dotenv').config()
-const express = require('express');
-const app = express ();
+const express = require("express");
+const app = express();
 const mongoose = require("mongoose");
-const Car = require('./models/car.js');
-const methodOVerride = require('method-override')
+const methodOverride = require('method-override')
 const morgan = require('morgan')
+const Car = require('./models/car.js');
 
 
 //===============Mongoose================//
 
 mongoose.connect(process.env.MONGODB_URI)
 mongoose.connection.on('connected', () => {
-    console.log('Connected to MongoDb')
+    console.log('Connected to MongoDB')
 })
 
-//===============Middleware================//
+//===============Middleware===nodem=============//
 
 app.use(express.urlencoded({ extended: false}))
 app.use(methodOverride('_method'))
@@ -35,6 +35,12 @@ app.get("/cars", async(req,res) => {
 app.get('/cars/new', (req,res) => {
     res.render("Cars/new.ejs")
 });
+
+app.get('/cars/:carId/edit', async(req,res) => {
+    const foundCar = await Car.findById(req.params.carbyId)
+    res.render('Cars/edit.ejs', {car: foundCar})
+})
+
 
 
 
