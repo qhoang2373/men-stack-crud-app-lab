@@ -30,7 +30,15 @@ app.get('/cars/new', (req,res) => {
     res.render("Cars/new.ejs")
 });
 
-app.put('/cars/')
+app.put('/cars/:carId', async(req,res) => {
+    if(req.body.isFast === 'on') {
+        req.body.isFast = true
+    } else {
+        req.body.isFast = false
+    }
+    await Car.findByIdAndUpdate(req.params.foodId, req.body);
+    res.redirect('/Cars/${req.params.carId}')
+})
 
 app.delete('/cars/:carId', async(req,res) => {
     await Car.findByIdAndDelete(req.params.carId)
