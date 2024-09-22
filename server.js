@@ -46,8 +46,6 @@ app.get('/cars/:carId/edit', async(req,res) => {
     res.render('Cars/edit.ejs', {car: foundCar})
 })
 
-
-
 app.put('/cars/:carId', async(req,res) => {
     if(req.body.isFast === 'on') {
         req.body.isFast = true

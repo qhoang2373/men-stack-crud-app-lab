@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cars Show Page</title>
+    <title>Current Car</title>
 </head>
 <body>
-    <h1>Cars Show Page</h1>
-    <h2><%=car.make %> <%= car.model %></h2>
+    <h1><%=car.make %> <%= car.model %></h1>
     <% if (car.isFast) { %>
         <p>This Car is Built for Speed</p>
         <% } else { %>
