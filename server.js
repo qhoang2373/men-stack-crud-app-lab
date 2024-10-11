@@ -7,7 +7,6 @@ const methodOverride = require('method-override')
 const morgan = require('morgan');
 const Car = require('./models/car.js');
 
-
 //===============Mongoose================//
 
 mongoose.connect(process.env.MONGODB_URI)
@@ -43,19 +42,18 @@ app.get("/cars/:carId", async(req,res) => {
 
 app.get('/cars/:carId/edit', async(req,res) => {
     const foundCar = await Car.findById(req.params.carId);
-    res.render('Cars/edit.ejs', { 
-        car: foundCar });
+    res.render('Cars/edit.ejs', { car: foundCar });
 });
 
-app.put('/cars/:carId', async(req,res) => {
-    if(req.body.isFast === 'on') {
-        req.body.isFast = true
+app.put('/cars/:carId', async (req, res) => {
+    if (req.body.isFast === 'on') {
+      req.body.isFast = true;
     } else {
-        req.body.isFast = false
+      req.body.isFast = false;
     }
     await Car.findByIdAndUpdate(req.params.carId, req.body);
-    res.redirect('/Cars/${req.params.carId}')
-})
+    res.redirect(`/cars/${req.params.carId}`);
+  });
 
 app.delete('/cars/:carId', async(req,res) => {
     await Car.findByIdAndDelete(req.params.carId)
@@ -71,7 +69,6 @@ app.post('/cars', async(req, res) => {
     await Car.create(req.body)
     res.redirect('/Cars');
 });
-
 
 
 app.listen(3000, () => {

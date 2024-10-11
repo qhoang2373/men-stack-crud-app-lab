@@ -12,12 +12,10 @@
     <form method="POST" action="/cars/<%=car._id%>?_method=PUT">
 
         <label for="make">Make:</label>
-        <input type="text" name="make" id="make" value="<%= car.title %>" />
-
+        <input type="text" name="make" id="make" value="<%= car.make %>" />
 
         <label for="model">Model:</label>
         <input type="text" name="model" id="model" value="<%= car.model %>" />
-
 
         <label for="isFast">Is it Built for Speed?</label>
         <input type="checkbox" name="isFast" id="isFast" <% if (car.isFast) { %>checked<% } %> >
@@ -28,5 +26,6 @@
         </form>
 
     </body>
+
 </html>
 
